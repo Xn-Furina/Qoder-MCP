@@ -1,0 +1,74 @@
+{
+  "name": "qoder-video-mcp",
+  "version": "0.4.4-pi.3",
+  "description": "Let Qoder CLI see a video: numbered storyboards, timestamped transcript index, local SenseVoice ASR, URL download and Linux MPRIS watch, exposed as an MCP server.",
+  "keywords": [
+    "qoder",
+    "mcp",
+    "video",
+    "storyboard",
+    "contact-sheet",
+    "ffmpeg",
+    "multimodal",
+    "asr",
+    "raspberry-pi"
+  ],
+  "author": "qoder-video-mcp contributors",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./plan": "./src/plan.js",
+    "./scan": "./src/scan.js",
+    "./segments": "./src/segments.js",
+    "./probe": "./src/probe.js",
+    "./sheet": "./src/sheet.js",
+    "./pipeline": "./src/pipeline.js",
+    "./tool-spec": "./src/tool-spec.js"
+  },
+  "bin": {
+    "qoder-video-scan": "./bin/scan-video.mjs",
+    "qoder-video": "./bin/qoder-video.mjs"
+  },
+  "files": [
+    "src",
+    "bin",
+    "scripts",
+    "mcp",
+    "pi",
+    "skills",
+    "commands",
+    ".qoder-plugin",
+    ".mcp.json",
+    "docs",
+    "cordis.patch.yml",
+    "dsh.plugin.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "CREDITS.md",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "prepublishOnly": "npm test",
+    "check": "node scripts/check-syntax.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.1.0-rc.7"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

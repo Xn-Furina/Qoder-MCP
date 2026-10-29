@@ -1,0 +1,12 @@
+{
+  "name": "qoder-video-mcp",
+  "description": "Scene-aware storyboard tool for DeepSeek Harness: one addressable grid per video, with an index the model can cite.",
+  "version": "0.4.4",
+  "entry": {
+    "name": "qoder-video-mcp",
+    "inject": [
+      "tools",
+      "attachments"
+    ]
+  }
+}

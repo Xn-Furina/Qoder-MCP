@@ -1,0 +1,19 @@
+#!/bin/sh
+# Launch the MCP stdio server with a Node that actually exists.
+# The Qoder plugin host may not inherit ~/.local/bin, so check known spots first.
+set -eu
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -n "${QODER_VIDEO_NODE:-}" ] && [ -x "${QODER_VIDEO_NODE}" ]; then
+  NODE=$QODER_VIDEO_NODE
+elif [ -x "$HOME/.local/bin/node" ]; then
+  NODE=$HOME/.local/bin/node
+elif command -v node >/dev/null 2>&1; then
+  NODE=$(command -v node)
+else
+  echo "qoder-video-mcp: node >= 20 not found (set QODER_VIDEO_NODE)" >&2
+  exit 127
+fi
+
+exec "$NODE" "$ROOT/mcp/server.mjs" "$@"
